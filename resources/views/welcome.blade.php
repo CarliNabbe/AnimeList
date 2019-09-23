@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    AnimeList App
+                    AnimeList
                 </div>
 
                 <div class="links">
