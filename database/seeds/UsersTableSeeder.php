@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => $faker->name,
             'email' => $faker->email,
-            'password' => $faker->password->password_hash(),
+            'password' => $faker->password,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);
