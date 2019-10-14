@@ -12,7 +12,21 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/services">Services</a>
+                    <a class="nav-link" href="/services">Services</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="/posts">Posts</a>
+                    </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="nav-link" href="/posts/create">Create Post</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/register">Register</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">

@@ -15,10 +15,10 @@ class CreateListAnimesTable extends Migration
     {
         Schema::create('list_animes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('list_id')->unsigned();
-            $table->foreign('list_id')->references('id')->on('lists');
-            $table->integer('anime_id')->unsigned();
-            $table->foreign('anime_id')->references('id')->on('animes');
+            // $table->integer('list_id')->unsigned();
+            // $table->foreign('list_id')->references('id')->on('lists');
+            // $table->integer('anime_id')->unsigned();
+            // $table->foreign('anime_id')->references('id')->on('animes');
             $table->timestamps();
         });
     }
