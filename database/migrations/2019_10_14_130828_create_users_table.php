@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListAnimesTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateListAnimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('list_animes', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('list_id')->unsigned();
-            $table->foreign('list_id')->references('id')->on('lists');
-            $table->integer('anime_id')->unsigned();
-            $table->foreign('anime_id')->references('id')->on('animes');
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateListAnimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_animes');
+        Schema::dropIfExists('users');
     }
 }
