@@ -175,4 +175,27 @@ class PostsController extends Controller
 
         return redirect('/posts')->with('success', 'Post Deleted');
     }
+
+    public function toggleLike() {
+        $post = Post::find($id);
+
+        $post->toggleLikeBy();
+        
+
+        if($post->liked) {
+            return response()->json([
+                'like' => [
+                    'isLiked' => true,
+                    'likes' => $post->likesCount
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'like' => [
+                    'isLiked' => false,
+                    'likes' => $post->likesCount
+                ]
+            ]);
+        }  
+    }
 }

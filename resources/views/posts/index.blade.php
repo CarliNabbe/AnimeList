@@ -11,6 +11,14 @@
                     </div>
                     <div class="col-md-8 col-sm-8">
                         <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
+
+                        <p id="getCount"><i class="fa fa-heart" style="color: red;"></i>{{$post->likesCount}}</p>
+                        @guest
+                        @else
+                        <p class="like" id="like"><i class="fa fa-heart" style="color: red"></i> Like</p>
+                        <p class="like" id="dislike"><i class="far fa-heart"></p>
+
+                        @endguest
                         <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
                     </div>
                 </div>
@@ -19,4 +27,47 @@
     @else
         <p>No posts found</p>
     @endif
+
+    <script>
+    
+        @if($post->liked)
+        $('#like').hide();
+        $('#dislike').show();
+        @else
+        $('#like').show();
+        $('#dislike').hide();
+        @endif
+    
+        @guest
+    
+        @else
+        $('.like').on('click', function () {
+    
+            const user = {{ Auth::user()->id }}
+            $.ajax({
+                type: 'get',
+                url: `{{ route('toggleLike', $post->id) }}`,
+                data: user,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if(data.like.isLiked) {
+                        $('#like').hide();
+                        $('#dislike').show();
+                        $('#likesCount').html('<i class="fa fa-heart" style="color:red;"></i>' + data.like.likes);
+                    } else {
+                        $('#dislike').hide();
+                        $('#like').show();
+                        $('#likesCount').html('<i class="fa fa-heart" style="color:red;"></i>' + data.like.likes);
+                    }
+                }
+                
+            });
+        });
+        @endif
+
+        </script>
+
 @endsection
+
