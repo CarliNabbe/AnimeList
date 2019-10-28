@@ -5,13 +5,10 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Cog\Contracts\Love\Reacterable\Models\Reacterable as ReacterableContract;
-use Cog\Laravel\Love\Reacterable\Models\Traits\Reacterable;
 
-class User extends Authenticatable implements ReacterableContract
+class User extends Authenticatable
 {
     use Notifiable;
-    use Reacterable;
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +37,13 @@ class User extends Authenticatable implements ReacterableContract
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts() {
+    public function likes() {
+        return $this->hasMany('App\Like');
+    }
+
+    public function post() {
         return $this->hasMany('App\Post');
     }
+
+    
 }

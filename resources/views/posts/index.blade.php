@@ -12,13 +12,11 @@
                     <div class="col-md-8 col-sm-8">
                         <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
 
-                        <p id="getCount"><i class="fa fa-heart" style="color: red;"></i>{{$post->likesCount}}</p>
-                        @guest
-                        @else
-                        <p class="like" id="like"><i class="fa fa-heart" style="color: red"></i> Like</p>
-                        <p class="like" id="dislike"><i class="far fa-heart"></p>
-
-                        @endguest
+                        <div class="interaction">
+                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You liked this post' : 'Like' : 'Like' }}</a> |
+                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike' }}</a>
+                            <hr>
+                        </div>
                         <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
                     </div>
                 </div>
@@ -28,46 +26,11 @@
         <p>No posts found</p>
     @endif
 
-    <script>
-    
-        @if($post->liked)
-        $('#like').hide();
-        $('#dislike').show();
-        @else
-        $('#like').show();
-        $('#dislike').hide();
-        @endif
-    
-        @guest
-    
-        @else
-        $('.like').on('click', function () {
-    
-            const user = {{ Auth::user()->id }}
-            $.ajax({
-                type: 'get',
-                url: `{{ route('toggleLike', $post->id) }}`,
-                data: user,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if(data.like.isLiked) {
-                        $('#like').hide();
-                        $('#dislike').show();
-                        $('#likesCount').html('<i class="fa fa-heart" style="color:red;"></i>' + data.like.likes);
-                    } else {
-                        $('#dislike').hide();
-                        $('#like').show();
-                        $('#likesCount').html('<i class="fa fa-heart" style="color:red;"></i>' + data.like.likes);
-                    }
-                }
-                
-            });
-        });
-        @endif
-
-        </script>
+    <script src="{{ asset('/js/like.js') }}"></script>
+    <script type="text/javascript">
+    let token = '{{ Session::token() }}';
+    let urlLike = '{{ route('like') }}';
+    </script>
 
 @endsection
 

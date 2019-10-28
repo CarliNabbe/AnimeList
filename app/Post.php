@@ -3,15 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Cog\Contracts\Love\Reactable\Models\Reactable as ReactableContract;
-use Cog\Laravel\Love\Reactable\Models\Traits\Reactable;
 
-class Post extends Model implements ReactableContract
+class Post extends Model
 {
-
-    use Reactable;
 
     public function user() {
         return $this->belongsTo('App\User');
+    }
+
+    public function likes() {
+        return $this->belongsTo('App\Like');
+    }
+
+    public function tags() {
+        
+        return $this->belongsToMany(Tag::class);
+
     }
 }
