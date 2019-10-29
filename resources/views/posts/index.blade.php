@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Posts</h1>
-    @if(count($posts) > 1)
+    @if(count($posts) > 0)
         @foreach ($posts as $post)
             <div class="card" style="width: 30rem; padding: 10px; margin: 0 0 10px 20px;">
                 <div class="row">
@@ -25,6 +25,17 @@
     @else
         <p>No posts found</p>
     @endif
+
+   
+        <h4>Tags</h4>
+
+        @foreach ($tags as $tag)
+            <a href="/posts/tags/{{ $tag }}">
+                {{ $tag }}
+            </a>
+        @endforeach
+    
+
 
     <script src="{{ asset('/js/like.js') }}"></script>
     <script type="text/javascript">

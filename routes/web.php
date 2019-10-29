@@ -34,3 +34,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::post('/like', 'PostsController@likePost')->name('like');
+
+Route::get('/posts/tags/{tag}', 'TagsController@index');
+

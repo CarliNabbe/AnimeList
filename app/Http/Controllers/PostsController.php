@@ -25,13 +25,14 @@ class PostsController extends Controller
     }
 
     public function index()
-    {
+    {        
         // $posts = Post::all();
         $posts = Post::orderBy('created_at', 'desc')->get();
         return view('posts.index')->with('posts', $posts);
     }
 
     public function likePost(Request $request) {
+        dd($request);
         $post_id = $request['postId'];
         $is_like = $request['isLike'] === 'true';
         $update = false;

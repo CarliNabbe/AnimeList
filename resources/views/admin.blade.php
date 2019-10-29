@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">ADMIN Dashboard</div>
+                <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,6 @@
                         </div>
                     @endif
                     <h1>Your own posts</h1>
-                    <h1>You are logged in as admin</h1>
                     <li>
                         <a class="btn btn-primary" style="margin: 10px;" href="/posts/create">Create Post</a>
                     </li>
@@ -24,7 +23,7 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        @foreach ($posts as $post)
+                        @foreach (Auth::user()->post as $post)
                         <tr>
                             <td>{{$post->title}}</td>
                             <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a></td>

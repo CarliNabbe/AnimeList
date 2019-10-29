@@ -26,6 +26,8 @@ class AdminController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('admin')->with('posts', $user->posts);
+        // return view('home')->with('posts', $user->posts);
+        return view('admin', compact('user'));
+        // dd($user->post());
     }
 }

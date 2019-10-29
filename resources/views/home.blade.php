@@ -23,7 +23,7 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        @foreach ($posts as $post)
+                        @foreach ($user->post as $post)
                         <tr>
                             <td>{{$post->title}}</td>
                             <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a></td>
