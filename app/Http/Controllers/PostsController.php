@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Post;
 use App\Like;
+use DB;
 // use Auth;
 
 class PostsController extends Controller
@@ -216,5 +217,16 @@ class PostsController extends Controller
         $post->delete();
 
         return redirect('/posts')->with('success', 'Post Deleted');
+    }
+
+    public function search(Request $request) {
+        $search = $request->get('search');
+        $posts = DB::table('posts')->where('name', 'like', '%'.$search.'%');
+        // return view('posts.index', ['posts' => $posts]);
+    }
+
+    public function usersPost(Request $request) {
+        $posts = DB::table('posts')->where('user_id', auth()->id())->get();
+        return redirect('/posts');
     }
 }

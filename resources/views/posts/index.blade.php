@@ -13,9 +13,14 @@
                         <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
 
                         <div class="interaction">
-                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You liked this post' : 'Like' : 'Like' }}</a> |
-                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike' }}</a>
+                         
+                            @if($usersPost > 2)
+                            <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You liked this post' : 'Like' : 'Like' }}</a> |
+                            <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike' }}</a>
+                            
                             <hr>
+                            @endif
+                        
                         </div>
                         <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
                     </div>

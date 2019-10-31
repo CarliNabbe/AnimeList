@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">This is the ADMIN Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h1>Your own posts</h1>
+                    <h1>All posts</h1>
                     <li>
                         <a class="btn btn-primary" style="margin: 10px;" href="/posts/create">Create Post</a>
                     </li>

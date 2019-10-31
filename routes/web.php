@@ -37,3 +37,4 @@ Route::post('/like', 'PostsController@likePost')->name('like');
 
 Route::get('/posts/tags/{tag}', 'TagsController@index');
 
+Route::get('/search', 'PostsController@search');

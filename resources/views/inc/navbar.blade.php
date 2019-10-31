@@ -29,6 +29,19 @@
                         </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        <div class="col-md-8">
+
+                            <form action="/search" method="get">
+                                <div class="input-group">
+                                    <input type="search" name="search" class="form-control">
+                                    <span class="input-group-prepend">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -53,6 +66,7 @@
                                     </a>
 
                                     <li><a href="/home">Dashboard</a></li>
+                                    <li><a href="{{ route('admin.login') }}">Admin login</a></li>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
