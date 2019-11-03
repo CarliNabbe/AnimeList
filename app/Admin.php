@@ -18,7 +18,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'id', 'name', 'email', 'password',
     ];
 
     /**
@@ -41,5 +41,9 @@ class Admin extends Authenticatable
 
     public function post() {
         return $this->hasMany('App\Post');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\user');
     }
 }

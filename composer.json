@@ -11,6 +11,7 @@
         "php": "^7.2",
         "cybercog/laravel-love": "^8.1",
         "fideloper/proxy": "^4.0",
+        "illuminate/support": "^6.4",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0"

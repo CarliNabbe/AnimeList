@@ -32,7 +32,8 @@
 
                         <div class="col-md-8">
 
-                            <form action="/search" method="get">
+                            <form action="{{ action('PostsController@search') }}" method="post">
+                                {{ csrf_field() }}
                                 <div class="input-group">
                                     <input type="search" name="search" class="form-control">
                                     <span class="input-group-prepend">

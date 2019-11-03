@@ -15,6 +15,9 @@
 //     return 'This is user '.$name.' with an id of '.$id;
 // });
 
+use App\User;
+use Illuminate\Support\Facades\Input;
+
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
@@ -37,4 +40,5 @@ Route::post('/like', 'PostsController@likePost')->name('like');
 
 Route::get('/posts/tags/{tag}', 'TagsController@index');
 
-Route::get('/search', 'PostsController@search');
+Route::post('/posts/search', 'PostsController@search');
+

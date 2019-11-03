@@ -12,6 +12,10 @@
                 <label for="body">Body</label>
                 <textarea class="form-control" name="body" cols="20" rows="10" placeholder="Body Text"></textarea>
             </div>
+            <div class="form-group">
+                    <label for="admin">Admin ID</label>
+                    <input type="number" class="form-control" cols="1" name="admin_id" placeholder="Admin ID"/>
+                </div>
             
             <div class="form-group">
                 {{Form::file('cover_image')}}
